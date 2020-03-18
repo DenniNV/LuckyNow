@@ -9,8 +9,8 @@ public class Score
     private int _dollar = 0;
     public int Dollar { set { _dollar += value; UpdateDollar(); } }
 
-    private int _coin = 0;
-    public int Coin { set { _coin += value; UpdateCoin(); }  }
+    private double _coin = 0;
+    public double Coin { set { _coin += value; UpdateCoin(); }  }
     private Score()
     { }
     public static Score getInstance()

@@ -16,7 +16,7 @@ public class ViewScore : MonoBehaviour
         _event.UpCoin += UpdateCoinText;
     }
 
-    private void UpdateCoinText(int newCoin)
+    private void UpdateCoinText(double newCoin)
     {
         _coinText.text = "" + newCoin;
     }

@@ -7,7 +7,7 @@ public class RewardLuckyWheel:Reward
     private float _angle;
     public float Angle => _angle;   
 
-    public RewardLuckyWheel(int rewardCoin, int rewardDollar, float angle)
+    public RewardLuckyWheel(double rewardCoin, int rewardDollar, float angle)
     {
         _rewardCoin = rewardCoin;
         _angle = angle;

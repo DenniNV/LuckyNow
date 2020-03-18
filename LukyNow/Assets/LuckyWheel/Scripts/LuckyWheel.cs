@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LuckyWheel : MonoBehaviour
 {
@@ -11,25 +12,43 @@ public class LuckyWheel : MonoBehaviour
     private float _startAngle = 0;
     private float _currentLerpRotationTime;
     public GameObject Circle;
+    public GameObject[] RewardsIcon;
     public int CurrentCoinsAmount = 1000;
     public int PreviousCoinsAmount;
     public int TurnCost = 0;
-    private Reward[] rewards = new RewardLuckyWheel[20];
-    private Score _score = Score.getInstance();
-
-    private void Start()
+    private Reward[] rewards =
     {
-        for(int i = 0; i<rewards.Length; i++)
-        {
-            rewards[i] = new RewardLuckyWheel(i, i*10, -18 * i);
-        }
-    }
+        new RewardLuckyWheel(0,0,0),
+        new RewardLuckyWheel(5,0,-18),
+        new RewardLuckyWheel(4.5,0,-36),
+        new RewardLuckyWheel(3000,0,-54),
+        new RewardLuckyWheel(0,10000,-72),
+        new RewardLuckyWheel(0,0,-90),
+        new RewardLuckyWheel(1,0,-108),
+        new RewardLuckyWheel(0,5500,-126),
+        new RewardLuckyWheel(0,7000,-144),
+        new RewardLuckyWheel(0,10,-162),
+        new RewardLuckyWheel(2000,0,-180),
+        new RewardLuckyWheel(0,50000,-198),
+        new RewardLuckyWheel(0,1500,-216),
+        new RewardLuckyWheel(0,3,-234),
+        new RewardLuckyWheel(60000,0,-252),
+        new RewardLuckyWheel(0,4000,-270),
+        new RewardLuckyWheel(0,500,-288),
+        new RewardLuckyWheel(0,1000,-306),
+        new RewardLuckyWheel(0,50,-324),
+        new RewardLuckyWheel(0,3500,-342),
+    }; 
+    
+    private Score _score = Score.getInstance();
+    private Events _events = Events.getInstance();
+    
     public void TurnWheel()
     {
         if (CurrentCoinsAmount >= TurnCost)
         {
+            _events.Interactable(false);
             _currentLerpRotationTime = 0f;
-            //_sectorsAngles = new float[] { 20, 40, 60, 80, 100, 120, 140, 1, 270, 300, 330, 360 };
             for(int i =0; i<=19; i++)
             {
                 _sectorsAngles[i] = 18 *i;
@@ -48,8 +67,8 @@ public class LuckyWheel : MonoBehaviour
         {
             if(r.Angle == _startAngle)
             {
-                Debug.Log(r.RewardDollar);
                 Debug.Log(r.RewardCoin);
+                Debug.Log(r.RewardDollar);
                 _score.Dollar = r.RewardDollar;
                 _score.Coin = r.RewardCoin;
             }
@@ -59,22 +78,29 @@ public class LuckyWheel : MonoBehaviour
     {
         if (!_isStarted)
             return;
-        float maxLerpRotationTime = 8f;
+        Spin();
+    }
+
+    private void Spin()
+    {
+        float maxLerpRotationTime = 12f;
         _currentLerpRotationTime += Time.deltaTime;
         if (_currentLerpRotationTime > maxLerpRotationTime || Circle.transform.eulerAngles.z == _finalAngle)
         {
             _currentLerpRotationTime = maxLerpRotationTime;
             _isStarted = false;
             _startAngle = _finalAngle % 360;
-
             GiveAwardByAngle();
-           
+            _events.Interactable(true);
         }
         float t = _currentLerpRotationTime / maxLerpRotationTime;
         t = t * t * t * (t * (6f * t - 15f) + 10f);
         float angle = Mathf.Lerp(_startAngle, _finalAngle, t);
         Circle.transform.eulerAngles = new Vector3(0, 0, angle);
+        for (int i = 0; i < RewardsIcon.Length; i++)
+        {
+            RewardsIcon[i].transform.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
-
 
 }

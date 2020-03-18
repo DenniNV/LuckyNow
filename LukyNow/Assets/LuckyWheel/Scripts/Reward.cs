@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Reward
 {
-    protected int _rewardCoin;
+    protected double _rewardCoin;
     protected int _rewardDollars;
-    public int RewardCoin => _rewardCoin;
+    public double RewardCoin => _rewardCoin;
     public int RewardDollar => _rewardDollars;
 }

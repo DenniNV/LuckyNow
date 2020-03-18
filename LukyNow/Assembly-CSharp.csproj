@@ -63,11 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DownPanel\Scripts\ButtonOnClick.cs" />
+    <Compile Include="Assets\DownPanel\Scripts\ButtonView.cs" />
+    <Compile Include="Assets\DownPanel\Scripts\DedicatedState.cs" />
+    <Compile Include="Assets\DownPanel\Scripts\IButtonState.cs" />
+    <Compile Include="Assets\DownPanel\Scripts\UnDedicatedState.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\LuckyWheel.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\Reward.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\RewardLuckyWheel.cs" />
     <Compile Include="Assets\Scripts\Events.cs" />
-    <Compile Include="Assets\Scripts\IEvent.cs" />
+    <Compile Include="Assets\Scripts\InteractableButton.cs" />
     <Compile Include="Assets\UpperPanel\Scripts\Score.cs" />
     <Compile Include="Assets\UpperPanel\Scripts\ViewScore.cs" />
     <None Include="Assets\Fonts\SIL Open Font License.txt" />

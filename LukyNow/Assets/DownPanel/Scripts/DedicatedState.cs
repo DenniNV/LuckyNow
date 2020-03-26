@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class DedicatedState : IButtonState
 {
-    public void State(ButtonView buttonView)
-    {
-        buttonView.ButtonState = new UnDedicatedState();
-
-    }
+   
 
     public void Dedicated(ButtonView buttonView)
     {

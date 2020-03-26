@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonView :MonoBehaviour , IComparable
+public class ButtonView : MonoBehaviour,IComparable
 {
     private Events _events = Events.getInstance();
     [SerializeField] private GameObject _gamePanel;
@@ -40,7 +40,6 @@ public class ButtonView :MonoBehaviour , IComparable
     private void OnApplicationQuit()
     {
         _events.RemoveButtonViewObserver(this);
-
     }
 
     public int CompareTo(object obj)
@@ -49,7 +48,6 @@ public class ButtonView :MonoBehaviour , IComparable
         if (b != null)
         {
             return this._circle.GetHashCode().CompareTo(b._circle.GetHashCode());
-
         }
         else
         {

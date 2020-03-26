@@ -38,9 +38,9 @@ public class LuckyWheel : MonoBehaviour
         new RewardLuckyWheel(0,1000,-306),
         new RewardLuckyWheel(0,50,-324),
         new RewardLuckyWheel(0,3500,-342),
-    }; 
-    
-    private Score _score = Score.getInstance();
+    };
+
+    private readonly RewardAccrual rewardAccrual = new RewardAccrual();
     private Events _events = Events.getInstance();
     
     public void TurnWheel()
@@ -67,10 +67,7 @@ public class LuckyWheel : MonoBehaviour
         {
             if(r.Angle == _startAngle)
             {
-                Debug.Log(r.RewardCoin);
-                Debug.Log(r.RewardDollar);
-                _score.Dollar = r.RewardDollar;
-                _score.Coin = r.RewardCoin;
+                rewardAccrual.Accrual(r.RewardCoin, r.RewardDollar); 
             }
         }
     }

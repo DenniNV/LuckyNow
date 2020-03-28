@@ -9,12 +9,9 @@ public class UnDedicatedLuckyButtonState : ILuckyNumbersState
     {
         luckyButtons.LuckyNumbersState = new DedicatedLuckyButtonState();
     }
-
     public void UnDedicated(LuckyButtonsView luckyButtons)
     {
         luckyButtons.ButtonImage.sprite = luckyButtons.UnPickButton;
         luckyButtons.ButtonInteractable.interactable = true;
     }
-
-    
 }

@@ -19,7 +19,6 @@ public class ViewWinNumbers : MonoBehaviour , IPickedView , IComparable
     public Text NumberPicked { get => _numberPicked; set => _numberPicked = value; }
     public IPickedNumbersState State { get; set; }
     public IGenerateWinNumbers GeneratorWinNumbers { set; get; }
-
     private Events events = Events.getInstance();
 
     public void Start()
@@ -36,7 +35,7 @@ public class ViewWinNumbers : MonoBehaviour , IPickedView , IComparable
     public void WinNumber()
     {
         GeneratorWinNumbers = new GenerateWinNumbers();
-        _numberPicked.text = GeneratorWinNumbers.Generate().ToString();
+        _numberPicked.text = winNumber.ToString();//GeneratorWinNumbers.Generate().ToString();
         Dedicated();
     }
 
@@ -44,7 +43,6 @@ public class ViewWinNumbers : MonoBehaviour , IPickedView , IComparable
     {
         UnDedicated();
         events.AddListenersPickNumberLuckyRandom(this);
-
     }
 
     private void UnDedicated()
@@ -52,7 +50,6 @@ public class ViewWinNumbers : MonoBehaviour , IPickedView , IComparable
         State = new UnPickerNumberSelected();
         State.UnSelected(this);
     }
-
     public void Dedicated()
     {
         State = new PickerNumberSelected();
@@ -64,7 +61,7 @@ public class ViewWinNumbers : MonoBehaviour , IPickedView , IComparable
         ViewWinNumbers b = obj as ViewWinNumbers;
         if (b != null)
         {
-            return transform.position.x.GetHashCode().CompareTo(b.transform.position.x.GetHashCode());
+            return transform.position.x.CompareTo(b.transform.position.x);
         }
         else
         {

@@ -54,7 +54,7 @@ public class PickerNumbersView : MonoBehaviour, IComparable , IPickedView
         PickerNumbersView b = obj as PickerNumbersView;
         if (b != null)
         {
-            return transform.position.x.GetHashCode().CompareTo(b.transform.position.x.GetHashCode());
+            return transform.position.x.CompareTo(b.transform.position.x);
         }
         else
         {

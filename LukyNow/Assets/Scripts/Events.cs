@@ -7,11 +7,12 @@ using System;
 public class Events 
 {
 
-    //Down Panel
+    #region DownPanelEvents
     private List<ButtonView> _listenersDownPanel = new List<ButtonView>();
     private delegate void DenicatedButton();
     private event DenicatedButton DedicatedState;
     private event DenicatedButton UnDedicatedState;
+    #region AddAndRemoveObjectsInList
     public void AddButtonViewObserver(ButtonView buttonView)
     {
         DedicatedState += buttonView.Dedicated;
@@ -39,7 +40,7 @@ public class Events
             throw new Exception("In AddListenersLucky param buttonsView == null");
         }
     }
-
+    #endregion
     public void ListenerOnClick(ButtonView buttonView)
     {
         _listenersDownPanel.Sort();
@@ -48,19 +49,19 @@ public class Events
         UnDedicatedState?.Invoke();
         _listenersDownPanel[index].Dedicated();
     }
+    #endregion
 
-
-    /// <summary>
-    /// /////////////////////////////////
-    /// </summary>
-
+    #region LuckyNumbersEvents
     private List<PickerNumbersView> _pickerNumbersListeners = new List<PickerNumbersView>();
     public List<PickerNumbersView> GetPickerNumbersListerers => _pickerNumbersListeners;
+
     private List<PickerNumbersView> _userChoice = new List<PickerNumbersView>();
     public List<PickerNumbersView> GetUserChoice => _userChoice;
+
     private List<ViewWinNumbers> _randomChoice = new List<ViewWinNumbers>();
     public List<ViewWinNumbers> GetRandomChoice => _randomChoice;
 
+    #region AddAndRemoveObjectsInList
     public void AddListenersPickNumberLuckyRandom(ViewWinNumbers view)
     {
         if (view != null)
@@ -83,7 +84,6 @@ public class Events
             throw new Exception("In RemoveListenersPickNumberLucky param view == null");
         }
     }
-
     public void AddListenersPickNumberLucky(PickerNumbersView view)
     {
         if (view != null)
@@ -96,7 +96,6 @@ public class Events
             throw new Exception("In AddListenersPickNumberLucky param view == null");
         }
     }
-
     public void RemoveListenersPickNumberLucky(PickerNumbersView view)
     {
         if (view != null)
@@ -108,7 +107,7 @@ public class Events
             throw new Exception("In RemoveListenersPickNumberLucky param view == null");
         }
     }
-
+    #endregion
     public void PickedNumbersListeners(LuckyButtonsView luckyButtons)
     {
         _pickerNumbersListeners.Sort();
@@ -118,7 +117,7 @@ public class Events
         OpenLastPick(_pickerNumbersListeners.Count);
 
     }
-
+    
     private void OpenLastPick(int count)
     {
         if (count < 2)
@@ -159,6 +158,11 @@ public class Events
         TryAgainNubmerPanel?.Invoke();
     }
 
+    public void SkipTime()
+    {
+        SkipTimeInLuckyNumbers?.Invoke();
+    }
+
     public delegate void DedicatedLuckyNumber();
     public event DedicatedLuckyNumber DedicatedLuckyState;
     public event DedicatedLuckyNumber UnDedicatedLuckyState;
@@ -168,8 +172,11 @@ public class Events
     public delegate void YouWinInLuckyNumbrs(bool state);
     public event YouWinInLuckyNumbrs YouWin;
     public event DedicatedLuckyNumber TryAgainNubmerPanel;
+    public delegate void Time();
+    public event Time SkipTimeInLuckyNumbers;
+    #endregion
 
-    // Single
+    #region Singleton
     private Events()
     { }
     private static Events instance;
@@ -179,8 +186,9 @@ public class Events
             instance = new Events();
         return instance;
     }
+    #endregion
 
-    // Score
+    #region ScoreEvents
     public delegate void Coin(double coin);
     public event Coin UpCoin;
     public delegate void Dollar(int dollar);
@@ -194,15 +202,16 @@ public class Events
     {
         UpDollar?.Invoke(dollar);
     }
+    #endregion
 
-
-    //Interactable buttons 
+    #region InteractableEvent
     public delegate void InteractableButton( bool state );
     public event InteractableButton ButtonState;
     public void Interactable(bool state)
     {
         ButtonState?.Invoke(state);
     }
+    #endregion
 
 
 }

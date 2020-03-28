@@ -8,7 +8,6 @@ public class UnPickerNumberSelected : IPickedNumbersState
     {
         numbersView.State = new PickerNumberSelected();
     }
-
     public void UnSelected(IPickedView numbersView)
     {
         numbersView.Circle.sprite = numbersView.DigitUnSelected;

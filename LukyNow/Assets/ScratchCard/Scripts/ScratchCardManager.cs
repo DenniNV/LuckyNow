@@ -27,11 +27,20 @@ public class ScratchCardManager : MonoBehaviour
 	public Shader BrushShader;
 	public Shader MaskProgressShader;
 	public Shader MaskProgressCutOffShader;
-	
+	private  IGetSprite _getSprite;
 	private Material eraserMaterial;
 	private const string MaskProgressCutOffField = "_CutOff";
 
-	void Awake()
+
+
+	public void SetSprite(IGetSprite getSprite)
+	{
+		_getSprite = getSprite;
+		ScratchSurfaceSprite = _getSprite.GetSprite();
+		CheckOnTheChoiceOfMod();
+	}
+
+	private void CheckOnTheChoiceOfMod() 
 	{
 		if (Card.MainCamera == null)
 		{
@@ -39,21 +48,21 @@ public class ScratchCardManager : MonoBehaviour
 		}
 
 		Material scratchSurfaceMaterial = null;
-		if (Card.ScratchSurface == null)
-		{
-			scratchSurfaceMaterial = new Material(MaskShader) {mainTexture = ScratchSurfaceSprite.texture};
+		//if (Card.ScratchSurface == null)
+		//{
+			scratchSurfaceMaterial = new Material(MaskShader) { mainTexture = ScratchSurfaceSprite.texture };
 			Card.ScratchSurface = scratchSurfaceMaterial;
-		}
-		
+		//}
+
 		if (Card.Eraser == null)
 		{
-			eraserMaterial = new Material(BrushShader) {mainTexture = EraseTexture};
+			eraserMaterial = new Material(BrushShader) { mainTexture = EraseTexture };
 			Card.Eraser = eraserMaterial;
 		}
-		
+
 		Card.BrushScale = EraseTextureScale;
 		Card.Mode = Mode;
-		
+
 		if (Card.Progress == null)
 		{
 			var shader = ScratchSurfaceSpriteHasAlpha ? MaskProgressCutOffShader : MaskProgressShader;
@@ -111,6 +120,10 @@ public class ScratchCardManager : MonoBehaviour
 			image.sprite = ScratchSurfaceSprite;
 			image.material = scratchSurfaceMaterial;
 		}
+	}
+	void Awake()
+	{
+		CheckOnTheChoiceOfMod();
 	}
 	
 	public void SetEraseTexture(Texture texture)

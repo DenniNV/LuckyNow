@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class QualifierOfVictory:MonoBehaviour 
+public class QualifierOfVictory : MonoBehaviour 
 {
 
     private List<bool> isSameValues = new List<bool>();
     private Events _events = Events.getInstance();
-
     public void CompareValues()
     {
         _events.GetRandomChoice.Sort();

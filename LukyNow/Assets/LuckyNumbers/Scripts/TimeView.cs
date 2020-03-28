@@ -12,12 +12,13 @@ public class TimeView : MonoBehaviour
     private double _time;
     private double _tempTime;
     private static TimeView _inst;
-    Events events = Events.getInstance();
+    private readonly Events events = Events.getInstance();
 
     private void Start()
     {
         _inst = this;
         events.WaitTimeEnd += StopTime;
+        events.SkipTimeInLuckyNumbers += SkipTime;
     }
     private void OnApplicationQuit()
     {
@@ -57,6 +58,10 @@ public class TimeView : MonoBehaviour
         }
     }
 
+    private void SkipTime()
+    {
+        _tempTime = 1;
+    }
     IEnumerator RepeatingFunction()
     {
         while (true)

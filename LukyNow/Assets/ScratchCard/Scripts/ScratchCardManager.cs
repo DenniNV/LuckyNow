@@ -23,24 +23,46 @@ public class ScratchCardManager : MonoBehaviour
 	public GameObject MeshCard;
 	public GameObject SpriteCard;
 	public GameObject ImageCard;
+
 	public Shader MaskShader;
 	public Shader BrushShader;
 	public Shader MaskProgressShader;
 	public Shader MaskProgressCutOffShader;
-	private  IGetSprite _getSprite;
+	
 	private Material eraserMaterial;
 	private const string MaskProgressCutOffField = "_CutOff";
 
-
-
+	private void Clear()
+	{
+		Card.ClearInstantly();
+		if (Progress != null)
+		{
+			Progress.ResetProgress();
+			Progress.UpdateProgress();
+		}
+	}
 	public void SetSprite(IGetSprite getSprite)
 	{
-		_getSprite = getSprite;
-		ScratchSurfaceSprite = _getSprite.GetSprite();
-		CheckOnTheChoiceOfMod();
+		ScratchSurfaceSprite = getSprite.GetSprite();
+
+		Material scratchSurfaceMaterial = null;
+		scratchSurfaceMaterial = new Material(MaskShader) { mainTexture = ScratchSurfaceSprite.texture };
+		Card.ScratchSurface = scratchSurfaceMaterial;
+		var image = ImageCard.GetComponent<Image>();
+		image.sprite = ScratchSurfaceSprite;
+		image.material = scratchSurfaceMaterial;
+		Card.Config();
 	}
 
-	private void CheckOnTheChoiceOfMod() 
+	void Awake()
+	{
+		Config();
+	}
+	//private void OnEnable()
+	//{
+	//	Config();
+	//}
+	private void Config()
 	{
 		if (Card.MainCamera == null)
 		{
@@ -48,11 +70,11 @@ public class ScratchCardManager : MonoBehaviour
 		}
 
 		Material scratchSurfaceMaterial = null;
-		//if (Card.ScratchSurface == null)
-		//{
+		if (Card.ScratchSurface == null)
+		{
 			scratchSurfaceMaterial = new Material(MaskShader) { mainTexture = ScratchSurfaceSprite.texture };
 			Card.ScratchSurface = scratchSurfaceMaterial;
-		//}
+		}
 
 		if (Card.Eraser == null)
 		{
@@ -121,16 +143,10 @@ public class ScratchCardManager : MonoBehaviour
 			image.material = scratchSurfaceMaterial;
 		}
 	}
-	void Awake()
-	{
-		CheckOnTheChoiceOfMod();
-	}
-	
 	public void SetEraseTexture(Texture texture)
 	{
 		eraserMaterial.mainTexture = texture;
 	}
-	
 	public void ResetScratchCard()
 	{
 		Card.Reset();

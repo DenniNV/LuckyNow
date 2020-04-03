@@ -16,7 +16,7 @@ public class EraseProgress : MonoBehaviour
 	private float currentProgress;
 	private bool isCompleted;
 
-	void Start()
+	void Awake()
 	{
 		scratchMode = Card.Mode;
 		commandBuffer = new CommandBuffer();
@@ -105,7 +105,13 @@ public class EraseProgress : MonoBehaviour
 	{
 		return currentProgress;
 	}
-	
+	private void Clear()
+	{
+		Card.ClearInstantly();
+		ResetProgress();
+		UpdateProgress();
+		
+	}
 	public void UpdateProgress()
 	{
 		GL.LoadOrtho();
@@ -114,6 +120,11 @@ public class EraseProgress : MonoBehaviour
 		commandBuffer.DrawMesh(mesh, Matrix4x4.identity, Card.Progress);
 		Graphics.ExecuteCommandBuffer(commandBuffer);
 		CalcProgress();
+		if (currentProgress >= 0.95)
+		{
+			Events.getInstance().ProgressFull();
+			Clear();
+		}
 	}
 	
 	public void ResetProgress()

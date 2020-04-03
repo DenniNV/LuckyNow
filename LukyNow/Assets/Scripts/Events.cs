@@ -51,6 +51,10 @@ public class Events
     }
     #endregion
 
+    #region RewardPanel
+
+    #endregion
+
     #region LuckyNumbersEvents
     private List<PickerNumbersView> _pickerNumbersListeners = new List<PickerNumbersView>();
     public List<PickerNumbersView> GetPickerNumbersListerers => _pickerNumbersListeners;
@@ -213,5 +217,57 @@ public class Events
     }
     #endregion
 
+    #region ScratchCrads
+
+
+    public delegate void OpenPanelCard(bool state);
+    public event OpenPanelCard OpenOrClose;
+    public delegate void WinOrLoseInScratchCards();
+
+    public event WinOrLoseInScratchCards ProgressInScratch;
+    public event WinOrLoseInScratchCards WinOrLose;
+    public event WinOrLoseInScratchCards OpenCardSelector;
+    public event WinOrLoseInScratchCards RemoveObjects;
+    public event WinOrLoseInScratchCards CheckProgressScratch;
+    private bool _bigCardFull;
+    public bool BigCardFull { set => _bigCardFull = value; }
+
+    private bool _smallCardFull = true;
+    public bool SmallCardFull { set => _smallCardFull = value; }
+
+    public void CheckProgress()
+    {
+        CheckProgressScratch?.Invoke();
+    }
+    public void ProgressFull()
+    {
+        ProgressInScratch?.Invoke();
+    }
+    public void Remove()
+    {
+        RemoveObjects?.Invoke();
+    }
+    public void OpenSelector()
+    {
+        OpenCardSelector?.Invoke();
+    }
+    public void OpenPanelCards(bool state)
+    {
+        OpenOrClose?.Invoke(state);
+    }
+
+    #endregion
+
+    #region RufleCards
+
+
+    public delegate void UpdateViewTickets();
+    public event UpdateViewTickets UpdateView;
+
+    public void Update()
+    {
+        UpdateView?.Invoke();
+    }
+    #endregion
 
 }

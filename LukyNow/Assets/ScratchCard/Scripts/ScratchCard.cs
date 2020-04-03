@@ -74,7 +74,12 @@ public class ScratchCard : MonoBehaviour
 	private const string BlendOpShaderParam = "_BlendOpValue";
 	private const int TouchMaxCount = 10;
 
-	void Start()
+	void Awake()
+	{
+		Config();
+	}
+
+	public void Config()
 	{
 		eraseStartPositions = new Vector2[TouchMaxCount];
 		eraseEndPositions = new Vector2[TouchMaxCount];
@@ -85,7 +90,7 @@ public class ScratchCard : MonoBehaviour
 			isStartPosition[i] = true;
 		}
 
-		commandBuffer = new CommandBuffer {name = "ScratchCard"};
+		commandBuffer = new CommandBuffer { name = "ScratchCard" };
 
 		quadMesh = new Mesh
 		{
@@ -357,6 +362,7 @@ public class ScratchCard : MonoBehaviour
 	
 	public void ClearInstantly()
 	{
+		commandBuffer =  new CommandBuffer { name = "ScratchCard" };
 		commandBuffer.SetRenderTarget(rti);
 		commandBuffer.ClearRenderTarget(false, true, Color.clear);
 		Graphics.ExecuteCommandBuffer(commandBuffer);

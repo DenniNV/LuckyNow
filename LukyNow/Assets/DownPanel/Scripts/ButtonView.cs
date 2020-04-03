@@ -9,13 +9,15 @@ public class ButtonView : MonoBehaviour,IComparable
     private Events _events = Events.getInstance();
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private Image _circle;
+    [SerializeField] private Text _buttonName;
+    [SerializeField] private Image _menuButton;
+    [SerializeField] private Sprite[] _stateImage;
 
+    public Text ButtonName { set => _buttonName = value; get => _buttonName; }
     public GameObject GamePanel { set =>_gamePanel = value; get => _gamePanel; }
     public Image Circle { set => _circle = value; get => _circle; }
-    [SerializeField] private Image _menuButton;
     public Image MenuButton { set => _menuButton = value; get => _menuButton; }
-    [SerializeField] private Sprite[] _state;
-    public Sprite[] State { set => _state = value; get => _state; }
+    public Sprite[] State { set => _stateImage = value; get => _stateImage; }
     public IButtonState ButtonState { set; get; }
 
     public void Dedicated()

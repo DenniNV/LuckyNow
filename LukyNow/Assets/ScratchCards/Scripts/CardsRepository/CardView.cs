@@ -6,9 +6,10 @@ public class CardView : MonoBehaviour , IGetSprite
 {
     [SerializeField] private ScratchCardManager _cardManager;
     [SerializeField] private CreateBackground _createBackground;
+    [SerializeField] private GameObject _cardScratchPanel;
     private Sprite _cardSprite;
-    [SerializeField] private IGetSpriptableObj _cards ;
-    public IGetSpriptableObj Cards => _cards;
+    [SerializeField] private IGetCardSettings _cards;
+    private Events events = Events.getInstance();
     public Sprite GetSprite()
     {
         return _cardSprite;
@@ -16,14 +17,16 @@ public class CardView : MonoBehaviour , IGetSprite
     public void SetMe()
     {
         _cardManager.SetSprite(this);
+        _cardManager.gameObject.SetActive(true);
     }
 
-    public void SetupSprite(IGetSpriptableObj cards)
+    public void SetupSprite(IGetCardSettings cards , bool state)
     {
-        _cards = cards;
-        _cardSprite = _cards.GetSprite();
+        _cardSprite = cards.GetSprite();
+        _createBackground.Create(cards.GetPrefab());
+        _cardScratchPanel.SetActive(true);
+        events.OpenPanelCards(state);
         SetMe();
-        _createBackground.Create(_cards.GetPrefab());
     }
 
 }

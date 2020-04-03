@@ -16,6 +16,7 @@ public class LuckyWheel : MonoBehaviour
     public int CurrentCoinsAmount = 1000;
     public int PreviousCoinsAmount;
     public int TurnCost = 0;
+    private RewardPanel rewardPanel = RewardPanel.getInstance();
     private Reward[] rewards =
     {
         new RewardLuckyWheel(0,0,0),
@@ -67,7 +68,7 @@ public class LuckyWheel : MonoBehaviour
         {
             if(r.Angle == _startAngle)
             {
-                rewardAccrual.Accrual(r.RewardCoin, r.RewardDollar); 
+                rewardPanel.AddReward(r.RewardCoin, r.RewardDollar);
             }
         }
     }

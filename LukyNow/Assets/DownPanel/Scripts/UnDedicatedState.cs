@@ -12,7 +12,8 @@ public class UnDedicatedState : IButtonState
     public void UnDedicated(ButtonView buttonView)
     {
         buttonView.Circle.enabled = false;
-        buttonView.MenuButton.sprite = buttonView.State[1];
+        buttonView.MenuButton.sprite = buttonView.State[0];
+        buttonView.ButtonName.color = new Color(0, 0, 0);
         buttonView.GamePanel.SetActive(false);
     }
 }

@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class RulfeFreeButtonState : IRufleButtonFreeState
+﻿public class RulfeFreeButtonState : IRuffleButtonFreeState
 {
-    RufleCount rufleCount = RufleCount.getInstance();
-    public void RufleBuyState(RufleButtonView view)
+    RaffleCount ruffleCount = RaffleCount.getInstance();
+    public void RuffleBuyState(RaffleTicket view)
     {
         //view.State = new RufleBuyButtonState();
     }
 
-    public void RufleFreeState(RufleButtonView view)
+    public void RuffleFreeState(RaffleTicket view)
     {
         //view.ButtonText.text = "FREE TICKETS";
         //Debug.Log("Free");

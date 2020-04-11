@@ -5,14 +5,15 @@ using UnityEngine;
 public class FullStateScratch : ICardState
 {
     private Events _events = Events.getInstance();
-    private RewardAccrual _rewardAccrual = new RewardAccrual();
+    private RewardPanel rewardPanel = RewardPanel.getInstance();
     public void FullScratchState(IGetCardSettings card)
     {
-        _rewardAccrual.Accrual(card.GetReward().RewardCoin, card.GetReward().RewardDollar);
+         rewardPanel.AddReward(card.GetReward().RewardCoin, card.GetReward().RewardDollar);
          card.WinIndex = 0;
         _events.Interactable(true);
         _events.OpenSelector();
         _events.Remove();
+        _events.Clear();
     }
 
     public void FullUnScratchState(IGetCardSettings card)

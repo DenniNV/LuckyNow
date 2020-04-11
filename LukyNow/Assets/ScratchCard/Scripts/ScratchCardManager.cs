@@ -32,15 +32,6 @@ public class ScratchCardManager : MonoBehaviour
 	private Material eraserMaterial;
 	private const string MaskProgressCutOffField = "_CutOff";
 
-	private void Clear()
-	{
-		Card.ClearInstantly();
-		if (Progress != null)
-		{
-			Progress.ResetProgress();
-			Progress.UpdateProgress();
-		}
-	}
 	public void SetSprite(IGetSprite getSprite)
 	{
 		ScratchSurfaceSprite = getSprite.GetSprite();
@@ -53,15 +44,12 @@ public class ScratchCardManager : MonoBehaviour
 		image.material = scratchSurfaceMaterial;
 		Card.Config();
 	}
-
+	#region Config
 	void Awake()
 	{
 		Config();
 	}
-	//private void OnEnable()
-	//{
-	//	Config();
-	//}
+	
 	private void Config()
 	{
 		if (Card.MainCamera == null)
@@ -151,4 +139,5 @@ public class ScratchCardManager : MonoBehaviour
 	{
 		Card.Reset();
 	}
+    #endregion
 }

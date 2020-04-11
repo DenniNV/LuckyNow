@@ -2,7 +2,7 @@
 
 public class CandyCash : MonoBehaviour, IGetCardSettings
 {
-    [SerializeField] private CardView _cardView;
+    [SerializeField] private BigCardView _cardView;
     [SerializeField] private Sprite _card;
     [SerializeField] private GameObject[] _prefabs;
     [SerializeField] private ScratchCardManager _scratchManager;
@@ -11,11 +11,11 @@ public class CandyCash : MonoBehaviour, IGetCardSettings
 
     private void OnEnable()
     {
-        _events.ProgressInScratch += CheckWinOrLose;
+        _events.ProgressInScratchBigCard += CheckWinOrLose;
     }
     private void OnDisable()
     {
-        _events.ProgressInScratch -= CheckWinOrLose;
+        _events.ProgressInScratchBigCard -= CheckWinOrLose;
     }
 
     private void CheckWinOrLose()

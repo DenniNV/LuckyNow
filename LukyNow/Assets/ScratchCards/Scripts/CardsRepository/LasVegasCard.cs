@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class LasVegasCard : MonoBehaviour, IGetCardSettings 
 {
-    [SerializeField] private CardView _cardView;
+    [SerializeField] private BigCardView _cardView;
     [SerializeField] private Sprite _card;
     [SerializeField] private GameObject[] _prefabs;
-    [SerializeField] private ScratchCardManager _scratchManager;
     private Reward _reward = new ScratchReward(0, 300);
     private Events _events = Events.getInstance();
 
     private void OnEnable()
     {
-        _events.ProgressInScratch += CheckWinOrLose;
+        _events.ProgressInScratchBigCard += CheckWinOrLose;
     }
     private void OnDisable()
     {
-        _events.ProgressInScratch -= CheckWinOrLose;
+        _events.ProgressInScratchBigCard -= CheckWinOrLose;
     }
 
     private void CheckWinOrLose()
@@ -44,11 +43,6 @@ public class LasVegasCard : MonoBehaviour, IGetCardSettings
     public void Setup()
     {
         _cardView.SetupSprite(this, true);
-    }
-
-    public ScratchCardManager GetScratchCardManager()
-    {
-        return _scratchManager;
     }
 
     public Reward GetReward()

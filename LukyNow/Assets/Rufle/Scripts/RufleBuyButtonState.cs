@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-class RufleBuyButtonState : IRufleButtonFreeState
+﻿class RufleBuyButtonState : IRuffleButtonFreeState
 {
-    public void RufleBuyState(RufleButtonView view)
+    public void RuffleBuyState(RaffleTicket view)
     {
         //view.ButtonText.text = "BUY TICKETS";
         //view.PanelBuy.SetActive(true);
         //Debug.Log("BuyPanel");
     }
-    public void RufleFreeState(RufleButtonView view)
+    public void RuffleFreeState(RaffleTicket view)
     {
         //view.State = new RulfeFreeButtonState();
     }

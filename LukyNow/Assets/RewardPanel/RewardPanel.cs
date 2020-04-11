@@ -22,7 +22,7 @@ public class RewardPanel
         _rewardView = rewardView;
     }
    
-    public void AddReward(double coin , int dollar)
+    public void AddReward(double coin , double dollar)
     {
         if(_rewardView == null) { throw new NullReferenceException(); }
         _rewardView.RewardCoin = coin;

@@ -7,6 +7,18 @@ using System;
 public class Events 
 {
 
+    #region BuyPanel
+
+
+    public delegate void Check();
+    public event Check CheckBuyButtonState;
+
+    public void SwitchButtonState()
+    {
+        CheckBuyButtonState?.Invoke();
+    }
+    #endregion
+
     #region DownPanelEvents
     private List<ButtonView> _listenersDownPanel = new List<ButtonView>();
     private delegate void DenicatedButton();
@@ -195,14 +207,13 @@ public class Events
     #region ScoreEvents
     public delegate void Coin(double coin);
     public event Coin UpCoin;
-    public delegate void Dollar(int dollar);
+    public delegate void Dollar(double dollar);
     public event Dollar UpDollar;
     public void CoinUpp(double coin)
     {
         UpCoin?.Invoke(coin);
     }
-
-    public void DollarUpp(int dollar)
+    public void DollarUpp(double dollar)
     {
         UpDollar?.Invoke(dollar);
     }
@@ -224,24 +235,29 @@ public class Events
     public event OpenPanelCard OpenOrClose;
     public delegate void WinOrLoseInScratchCards();
 
-    public event WinOrLoseInScratchCards ProgressInScratch;
+    public event WinOrLoseInScratchCards ProgressInScratchBigCard;
+    public event WinOrLoseInScratchCards ProgressInScratchSmallCard;
+
+    public event WinOrLoseInScratchCards ClearScratchCards;
     public event WinOrLoseInScratchCards WinOrLose;
     public event WinOrLoseInScratchCards OpenCardSelector;
     public event WinOrLoseInScratchCards RemoveObjects;
     public event WinOrLoseInScratchCards CheckProgressScratch;
-    private bool _bigCardFull;
-    public bool BigCardFull { set => _bigCardFull = value; }
-
-    private bool _smallCardFull = true;
-    public bool SmallCardFull { set => _smallCardFull = value; }
-
     public void CheckProgress()
     {
         CheckProgressScratch?.Invoke();
     }
-    public void ProgressFull()
+    public void ProgressFullBig()
     {
-        ProgressInScratch?.Invoke();
+        ProgressInScratchBigCard?.Invoke();
+    }
+    public void ProgressFullSmall()
+    {
+        ProgressInScratchSmallCard?.Invoke();
+    }
+    public void Clear()
+    {
+        ClearScratchCards?.Invoke();
     }
     public void Remove()
     {
@@ -258,7 +274,7 @@ public class Events
 
     #endregion
 
-    #region RufleCards
+    #region RaffleCards
 
 
     public delegate void UpdateViewTickets();

@@ -6,10 +6,10 @@ public class RewardAccrual
 {
     protected Score score = Score.getInstance();
 
-    public void Accrual(double coins , int dollars)
+    public void Accrual(double coins , double dollars)
     {
-        score.Coin = coins;
-        score.Dollar = dollars;
+        score.PlusMoney(coins, dollars);
+        
     }
 
 }

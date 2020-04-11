@@ -7,11 +7,11 @@ public class RewardViewPanel : MonoBehaviour
 {
     [SerializeField] private Text _rewardText;
     private RewardAccrual rewardAccrual = new RewardAccrual();
-    private double _rewardCoin;
-    private int _rewardDollar;
+    private double _rewardCoin =0;
+    private double _rewardDollar =0;
     RewardPanel panel = RewardPanel.getInstance();
     public double RewardCoin { set => _rewardCoin = value; get => _rewardCoin; }
-    public int RewrdDollar { set => _rewardDollar = value; get =>_rewardDollar;}
+    public double RewrdDollar { set => _rewardDollar = value; get =>_rewardDollar;}
     public Text RewardText { set; get; }
 
     private void Awake()
@@ -34,7 +34,7 @@ public class RewardViewPanel : MonoBehaviour
     }
     public void UpdateText()
     {
-        _rewardText.text = "You aern " + _rewardCoin + " coins" + _rewardDollar + " dollars";
+        _rewardText.text = "You aern " + _rewardCoin + " coins " + _rewardDollar + " dollars ";
     }
     public void RewardGetOne()
     {

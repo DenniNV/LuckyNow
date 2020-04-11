@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WinUpToCard : MonoBehaviour, IGetCardSettings
 {
-    [SerializeField] private CardView _cardView;
+    [SerializeField] private BigCardView _cardView;
     [SerializeField] private Sprite _card;
     [SerializeField] private GameObject[] _prefabs;
     [SerializeField] private ScratchCardManager _scratchManager;
@@ -13,16 +13,16 @@ public class WinUpToCard : MonoBehaviour, IGetCardSettings
 
     private void OnEnable()
     {
-        _events.ProgressInScratch += CheckWinOrLose;
+        _events.ProgressInScratchBigCard += CheckWinOrLose;
     }
     private void OnDisable()
     {
-        _events.ProgressInScratch -= CheckWinOrLose;
+        _events.ProgressInScratchBigCard -= CheckWinOrLose;
     }
 
     private void CheckWinOrLose()
     {
-        if (_scratchManager.Progress.GetProgress() >= 0.90 && WinIndex == 1)
+        if (WinIndex == 1)
         {
             State = new FullStateScratch();
             State.FullScratchState(this);

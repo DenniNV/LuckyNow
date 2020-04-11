@@ -14,7 +14,5 @@ public class FullScratchStateUn : ICardState
     {
         card.WinIndex = 0;
         _events.Interactable(true);
-        _events.OpenSelector();
-        _events.Remove();
     }
 }

@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class XFiveBingoCard : MonoBehaviour, IGetCardSettings
 {
-    [SerializeField] private CardView _cardView;
+    [SerializeField] private BigCardView _cardView;
     [SerializeField] private Sprite _card;
     [SerializeField] private GameObject[] _prefabs;
-    [SerializeField] private ScratchCardManager _scratchManager;
     private Reward _reward = new ScratchReward(0, 300);
     private Events _events = Events.getInstance();
 
     private void OnEnable()
     {
-        _events.ProgressInScratch += CheckWinOrLose;
+        _events.ProgressInScratchBigCard += CheckWinOrLose;
     }
     private void OnDisable()
     {
-        _events.ProgressInScratch -= CheckWinOrLose;
+        _events.ProgressInScratchBigCard -= CheckWinOrLose;
     }
 
     private void CheckWinOrLose()
     {
-        if (_scratchManager.Progress.GetProgress() >= 0.90 && WinIndex == 1)
+        if (WinIndex == 1)
         {
             State = new FullStateScratch();
             State.FullScratchState(this);
@@ -43,22 +42,13 @@ public class XFiveBingoCard : MonoBehaviour, IGetCardSettings
     {
         _cardView.SetupSprite(this, true);
     }
-
-    public ScratchCardManager GetScratchCardManager()
-    {
-        return _scratchManager;
-    }
-
     public Reward GetReward()
     {
         return _reward;
     }
     public int WinIndex { get => _winIdex; set => _winIdex = value; }
     public ICardState State { get; set; }
-
     private int _winIdex;
-
-
     public GameObject GetPrefab()
     {
         _winIdex = Random.Range(0, 2);

@@ -139,6 +139,7 @@ public class Events
         if (count < 2)
         {
             OpenPanelLastPick?.Invoke();
+            Interactable(true);
             
         }
         if (count < 1)

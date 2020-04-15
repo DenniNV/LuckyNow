@@ -69,14 +69,14 @@
     <Compile Include="Assets\DownPanel\Scripts\IButtonState.cs" />
     <Compile Include="Assets\DownPanel\Scripts\UnDedicatedState.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\AddText.cs" />
-    <Compile Include="Assets\LuckyNumbers\Scripts\AwardAccrualLuckyNumbers.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\DedicatedLuckyButtonState.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\GenerateWinNumbers.cs" />
-    <Compile Include="Assets\LuckyNumbers\Scripts\Interface\IAwardAccrual.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\Interface\IGenerateWinNumbers.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\Interface\ILuckyNumbersState.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\Interface\IPickedNumbersState.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\Interface\IPickedView.cs" />
+    <Compile Include="Assets\LuckyNumbers\Scripts\Interface\IStateLuckyNumbersPanel.cs" />
+    <Compile Include="Assets\LuckyNumbers\Scripts\LastPickButton.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\LuckyButtonsView.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\OpenPanel.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\PickerNumberSelected.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="Assets\LuckyNumbers\Scripts\QualitierOfVictoryIEqualityComparer.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\QuickPick.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\RewardInLuckyNumbers.cs" />
+    <Compile Include="Assets\LuckyNumbers\Scripts\StatePanelLuckyNumbers.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\TimeView.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\UnDedicatedLuckyButtonState.cs" />
     <Compile Include="Assets\LuckyNumbers\Scripts\UnPikerNumberSelected.cs" />
@@ -95,6 +96,12 @@
     <Compile Include="Assets\LuckyWheel\Scripts\PriceLuckyWheel.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\Reward.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\RewardLuckyWheel.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\IStateRewardEveryday.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\RewardEvertdayUnReceived.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\RewardEveryday.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\RewardEverydayView.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\StateRewardReceived.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\TimeManager.cs" />
     <Compile Include="Assets\RewardPanel\RewardPanel.cs" />
     <Compile Include="Assets\RewardPanel\RewardViewPanel.cs" />
     <Compile Include="Assets\Rufle\Scripts\BuyPanel\IRufleConfig.cs" />

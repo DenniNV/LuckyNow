@@ -5,7 +5,9 @@ using UnityEngine;
 public class OpenPanel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _panel;
+    private GameObject _panelLastPick;
+    [SerializeField]
+    private GameObject _panelFristPick;
 
     private Events events = Events.getInstance();
 
@@ -15,6 +17,7 @@ public class OpenPanel : MonoBehaviour
     }
     public void Open()
     {
-        _panel.SetActive(true);
+        _panelLastPick.SetActive(true);
+        _panelFristPick.SetActive(false);
     }
 }

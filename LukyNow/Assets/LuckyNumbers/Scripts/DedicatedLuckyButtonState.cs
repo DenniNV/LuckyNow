@@ -8,6 +8,7 @@ public class DedicatedLuckyButtonState : ILuckyNumbersState
     public void Dedicated(LuckyButtonsView luckyButtons)
     {
         luckyButtons.ButtonImage.sprite = luckyButtons.PickButton;
+        luckyButtons.ButtonImage.color = new Color(255, 255, 255, 255);
         luckyButtons.ButtonInteractable.interactable = false;
 
     }

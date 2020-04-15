@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IAwardAccrual 
+public class StatePanelLuckyNumbers : MonoBehaviour
 {
-    void AwardAccrual();
+
+
 }

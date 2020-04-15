@@ -13,12 +13,12 @@ public class WaitPanelButtons : MonoBehaviour
     [SerializeField] private GameObject[] _closeObject;
     [SerializeField] private GameObject[] _openObject;
     private Events _events = Events.getInstance();
-    private readonly Reward _reward = new RewardInLuckyNumbers(500, 500);
+    private readonly Reward _reward = new RewardInLuckyNumbers(5000, 0.5);
     private RewardAccrual _rewardAccrual = new RewardAccrual();
-    private IAwardAccrual _awardAccrual = new AwardAccrualLuckyNumbers();
+    private RewardPanel rewardPanel = RewardPanel.getInstance();
     public void RewardAccrual()
     {
-        _awardAccrual.AwardAccrual();
+        rewardPanel.AddReward(_reward.RewardCoin , _reward.RewardDollar);
         TryAgain();
     }
     private void OnEnable()
@@ -31,7 +31,6 @@ public class WaitPanelButtons : MonoBehaviour
         _events.YouWin -= WhenDidYouWinOrLose;
         _events.WaitTimeEnd -= EnableCheckWinOrLoseButton;
     }
-
     private void EnableCheckWinOrLoseButton()
     {
         _checkWinOrLose.gameObject.SetActive(true);
@@ -55,7 +54,6 @@ public class WaitPanelButtons : MonoBehaviour
             _openObject[i].SetActive(true);
         }
     }
-
     public void SkipTime()
     {
         // Вызов рекламы

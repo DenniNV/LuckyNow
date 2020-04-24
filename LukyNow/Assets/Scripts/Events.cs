@@ -287,4 +287,13 @@ public class Events
     }
     #endregion
 
+
+    public delegate void EveryDay(bool state);
+    public event EveryDay OpenOrCloseEveryDay;
+    public void OpenOrCloseEveryDayPanel(bool state)
+    {
+        OpenOrCloseEveryDay?.Invoke(state);
+    }
+   
+
 }

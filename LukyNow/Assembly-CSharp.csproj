@@ -96,12 +96,15 @@
     <Compile Include="Assets\LuckyWheel\Scripts\PriceLuckyWheel.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\Reward.cs" />
     <Compile Include="Assets\LuckyWheel\Scripts\RewardLuckyWheel.cs" />
+    <Compile Include="Assets\MainScene\Scripts\LoadScene.cs" />
     <Compile Include="Assets\RewardEveryday\Scripts\IStateRewardEveryday.cs" />
-    <Compile Include="Assets\RewardEveryday\Scripts\RewardEvertdayUnReceived.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\OpenEverydayPanel.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\PrizeQualifier.cs" />
     <Compile Include="Assets\RewardEveryday\Scripts\RewardEveryday.cs" />
     <Compile Include="Assets\RewardEveryday\Scripts\RewardEverydayView.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\StateEvertdayUnReceived.cs" />
     <Compile Include="Assets\RewardEveryday\Scripts\StateRewardReceived.cs" />
-    <Compile Include="Assets\RewardEveryday\Scripts\TimeManager.cs" />
+    <Compile Include="Assets\RewardEveryday\Scripts\TimeCounter.cs" />
     <Compile Include="Assets\RewardPanel\RewardPanel.cs" />
     <Compile Include="Assets\RewardPanel\RewardViewPanel.cs" />
     <Compile Include="Assets\Rufle\Scripts\BuyPanel\IRufleConfig.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Assets\ScratchCards\Scripts\TicketCreator.cs" />
     <Compile Include="Assets\Scripts\Buy.cs" />
     <Compile Include="Assets\Scripts\Events.cs" />
+    <Compile Include="Assets\Scripts\FirstStart.cs" />
     <Compile Include="Assets\Scripts\InteractableButton.cs" />
     <Compile Include="Assets\Scripts\Price.cs" />
     <Compile Include="Assets\Scripts\RewardAccrual.cs" />

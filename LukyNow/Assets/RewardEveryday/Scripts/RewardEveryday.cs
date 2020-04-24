@@ -3,6 +3,7 @@
 public class RewardEveryday : Reward
 {
     private int _day;
+    public int Day => _day;
     public RewardEveryday(double coin, double dollar, int day)
     {
         _day = day;

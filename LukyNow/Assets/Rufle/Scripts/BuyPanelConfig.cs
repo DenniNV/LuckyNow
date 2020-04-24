@@ -55,8 +55,9 @@ public class BuyPanelConfig : MonoBehaviour
         }
         catch
         {
-
             gameObject.SetActive(false);
+            _buyPanelView.RafflePanel.SetActive(true);
+            Debug.Log("Предложение показа рекламы");
             return;
         }
         
